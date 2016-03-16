@@ -1,5 +1,6 @@
 package main;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
@@ -11,6 +12,13 @@ public class DB {
 	
 	public static void saveObject(Object object) {
 		try {
+			
+			File file = new File(path);
+			
+			if (!file.exists()) {
+				file.mkdirs();
+			}
+			
 			FileOutputStream fout = new FileOutputStream(path + object.getClass().getSimpleName() + ".ser");
 			ObjectOutputStream out = new ObjectOutputStream(fout);
 			out.writeObject(object);
@@ -29,7 +37,6 @@ public class DB {
 			in.close();
 			return object2;
 		} catch (Exception e) {
-			e.printStackTrace();
 		}
 		return null;
 	}

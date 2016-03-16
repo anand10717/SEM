@@ -20,8 +20,7 @@ public class ConfigurationPanel extends JPanel {
 	JLabel path = new JLabel("");
 	int xAdjust = 100, yAdjust = xAdjust;
 	FolderDetails details = new FolderDetails();
-	
-	
+
 	public ConfigurationPanel() {
 		setLayout(null);
 		folderPathField.setBounds(xAdjust + 100, yAdjust + 100, 300, 30);
@@ -53,16 +52,16 @@ public class ConfigurationPanel extends JPanel {
 		});
 
 		setVisible(true);
-		
+
 		try {
 			details = (FolderDetails) DB.readObject(details);
 			if (details != null) {
 				folderPathField.setText(details.getFolderPath());
 				folderNameField.setText(details.getFolderName());
 			}
-			
+
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println("Initial configuration is missing.");
 		}
 	}
 
@@ -72,6 +71,14 @@ public class ConfigurationPanel extends JPanel {
 		DB.saveObject(details);
 
 		File dir = new File(details.getFolderPath() + File.separator + details.getFolderName());
+
+
+		File file = new File(dir.getPath());
+		
+		if (!file.exists()) {
+			file.getParentFile().mkdirs();
+		}
+		
 		if (dir.mkdirs()) {
 			Dialogs.success("Folder created successfully");
 		}

@@ -62,6 +62,7 @@ public class BlindingPanel extends JPanel {
 				+ Constants.BLIND_FILE_NAME;
 
 		FileCopier.copy(sourceFile, dest);
+		Dialogs.success("File copied successfully");
 	}
 
 	private void onBrowseClick() {

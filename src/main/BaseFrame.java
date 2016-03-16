@@ -27,11 +27,6 @@ public class BaseFrame extends JFrame {
 		tabbedPane.addTab("Blind Operation", new BlindingPanel());
 		tabbedPane.addTab("Unbind Operation", new UnBlindingPanel());
 		tabbedPane.addTab("Configurations", new ConfigurationPanel());
-		tabbedPane.addChangeListener(new ChangeListener() {
-	        public void stateChanged(ChangeEvent e) {
-	            System.out.println("Tab: " + tabbedPane.getSelectedIndex());
-	        }
-	    });
 
 		setLayout(new GridLayout(1, 1));
 		add(tabbedPane);

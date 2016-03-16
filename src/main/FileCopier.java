@@ -16,12 +16,10 @@ public class FileCopier {
 		if (!destFile.exists()) {
 			try {
 				destFile.createNewFile();
-				System.out.println("Destination file doesn't exist. Creating one!");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
-		
 
 		try {
 			in = new FileInputStream(sourceFilePath);

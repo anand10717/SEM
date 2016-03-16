@@ -62,6 +62,7 @@ public class UnBlindingPanel extends JPanel {
 				+ Constants.DONWLOADED_FILE_NAME;
 
 		FileCopier.copy(sourceFile, dest);
+		Dialogs.success("File copied successfully");
 	}
 
 	private void onBrowseClick() {
